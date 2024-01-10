@@ -29,6 +29,7 @@ import io.quarkus.runtime.Quarkus;
 public class IDELauncher {
 
     public static void main(String[] args) {
+        // deneme yorum satırı
         List<String> devArgs = new ArrayList<>(Picocli.parseArgs(args));
 
         if (System.getProperty("kc.home.dir") == null) {
