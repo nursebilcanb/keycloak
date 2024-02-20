@@ -50,6 +50,8 @@ function getIcon(icon: string) {
       return BitbucketIcon;
     case "mobilsign":
       return BitbucketIcon;
+    case "esign":
+      return BitbucketIcon;
     case "instagram":
       return InstagramIcon;
     case "paypal":

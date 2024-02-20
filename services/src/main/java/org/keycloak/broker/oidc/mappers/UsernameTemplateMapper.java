@@ -42,6 +42,7 @@ import org.keycloak.social.openshift.OpenshiftV4IdentityProviderFactory;
 import org.keycloak.social.paypal.PayPalIdentityProviderFactory;
 import org.keycloak.social.stackoverflow.StackoverflowIdentityProviderFactory;
 import org.keycloak.social.twitter.TwitterIdentityProviderFactory;
+import org.keycloak.turksat.esign.EsignIdentityProviderFactory;
 import org.keycloak.turksat.mobilsign.MobilsignIdentityProviderFactory;
 
 import java.util.ArrayList;
@@ -69,6 +70,7 @@ public class UsernameTemplateMapper extends AbstractClaimMapper {
             OIDCIdentityProviderFactory.PROVIDER_ID,
             BitbucketIdentityProviderFactory.PROVIDER_ID,
             MobilsignIdentityProviderFactory.PROVIDER_ID,
+            EsignIdentityProviderFactory.PROVIDER_ID,
             FacebookIdentityProviderFactory.PROVIDER_ID,
             GitHubIdentityProviderFactory.PROVIDER_ID,
             GitLabIdentityProviderFactory.PROVIDER_ID,

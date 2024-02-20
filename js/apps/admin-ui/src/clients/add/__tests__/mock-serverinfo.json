@@ -323,6 +323,11 @@
          "groupName":"Turksat",
          "name":"Mobil Sign",
          "id":"mobilsign"
+      },
+      {
+         "groupName":"Turksat",
+         "name":"E Sign",
+         "id":"esign"
       }
    ],
   "identityProviders":[
@@ -380,6 +385,11 @@
         "groupName":"Social",
         "name":"Mobil Sign",
         "id":"mobilsign"
+     },
+     {
+        "groupName":"Turksat",
+        "name":"E Sign",
+        "id":"esign"
      },
      {
         "groupName":"Social",

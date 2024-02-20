@@ -244,6 +244,8 @@ class LinkedAccountsPage extends React.Component<LinkedAccountsPageProps, Linked
           return <BitbucketIcon id={socialIconId} size='lg'/>;
           case account.providerName.toLowerCase().includes('mobilsign'):
               return <BitbucketIcon id={turksatIconId} size='lg'/>;
+          case account.providerName.toLowerCase().includes('esign'):
+              return <BitbucketIcon id={turksatIconId} size='lg'/>;
         case account.providerName.toLowerCase().includes('twitter'):
           return <TwitterIcon id={socialIconId} size='lg'/>;
         case account.providerName.toLowerCase().includes('openshift'):
