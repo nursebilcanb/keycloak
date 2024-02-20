@@ -22,6 +22,8 @@ import org.keycloak.Config;
 import org.keycloak.Config.Scope;
 import org.keycloak.broker.social.SocialIdentityProvider;
 import org.keycloak.broker.social.SocialIdentityProviderFactory;
+import org.keycloak.broker.turksat.TurksatIdentityProvider;
+import org.keycloak.broker.turksat.TurksatIdentityProviderFactory;
 import org.keycloak.common.util.CertificateUtils;
 import org.keycloak.common.util.KeyUtils;
 import org.keycloak.common.util.PemUtils;
@@ -971,13 +973,21 @@ public final class KeycloakModelUtils {
             return displayName;
         }
 
-        SocialIdentityProviderFactory providerFactory = (SocialIdentityProviderFactory) session.getKeycloakSessionFactory()
-                .getProviderFactory(SocialIdentityProvider.class, provider.getProviderId());
+        TurksatIdentityProviderFactory providerFactory = (TurksatIdentityProviderFactory) session.getKeycloakSessionFactory()
+                .getProviderFactory(TurksatIdentityProvider.class, provider.getProviderId());
         if (providerFactory != null) {
             return providerFactory.getName();
         } else {
             return provider.getAlias();
         }
+
+//        SocialIdentityProviderFactory providerFactory = (SocialIdentityProviderFactory) session.getKeycloakSessionFactory()
+//                .getProviderFactory(SocialIdentityProvider.class, provider.getProviderId());
+//        if (providerFactory != null) {
+//            return providerFactory.getName();
+//        } else {
+//            return provider.getAlias();
+//        }
     }
 
     /**

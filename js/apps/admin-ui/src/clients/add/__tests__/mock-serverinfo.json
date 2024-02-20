@@ -318,6 +318,13 @@
         "id":"stackoverflow"
      }
   ],
+   "turksatProviders": [
+      {
+         "groupName":"Turksat",
+         "name":"Mobil Sign",
+         "id":"mobilsign"
+      }
+   ],
   "identityProviders":[
      {
         "groupName":"User-defined",
@@ -368,6 +375,11 @@
         "groupName":"Social",
         "name":"BitBucket",
         "id":"bitbucket"
+     },
+     {
+        "groupName":"Social",
+        "name":"Mobil Sign",
+        "id":"mobilsign"
      },
      {
         "groupName":"Social",

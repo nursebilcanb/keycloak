@@ -37,6 +37,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriBuilder;
 import org.jboss.logging.Logger;
+import org.keycloak.broker.turksat.TurksatIdentityProvider;
 import org.keycloak.http.HttpRequest;
 import org.keycloak.broker.social.SocialIdentityProvider;
 import org.keycloak.common.util.Base64Url;
@@ -99,7 +100,11 @@ public class LinkedAccountsResource {
         SortedSet<LinkedAccountRepresentation> linkedAccounts = getLinkedAccounts(this.session, this.realm, this.user);
         return Cors.add(request, Response.ok(linkedAccounts)).auth().allowedOrigins(auth.getToken()).build();
     }
-    
+    private Set<String> findTurksatIds(){
+        return session.getKeycloakSessionFactory().getProviderFactoriesStream(TurksatIdentityProvider.class)
+                .map(ProviderFactory::getId)
+                .collect(Collectors.toSet());
+    }
     private Set<String> findSocialIds() {
        return session.getKeycloakSessionFactory().getProviderFactoriesStream(SocialIdentityProvider.class)
                .map(ProviderFactory::getId)
@@ -108,12 +113,15 @@ public class LinkedAccountsResource {
 
     public SortedSet<LinkedAccountRepresentation> getLinkedAccounts(KeycloakSession session, RealmModel realm, UserModel user) {
         Set<String> socialIds = findSocialIds();
+        Set<String> turksatIds = findTurksatIds();
         return realm.getIdentityProvidersStream().filter(IdentityProviderModel::isEnabled)
-                .map(provider -> toLinkedAccountRepresentation(provider, socialIds, session.users().getFederatedIdentitiesStream(realm, user)))
+//                .map(provider -> toLinkedAccountRepresentation(provider, socialIds, session.users().getFederatedIdentitiesStream(realm, user))
+                .map(provider -> toLinkedAccountRepresentation(provider, turksatIds, session.users().getFederatedIdentitiesStream(realm, user))
+                )
                 .collect(Collectors.toCollection(TreeSet::new));
     }
 
-    private LinkedAccountRepresentation toLinkedAccountRepresentation(IdentityProviderModel provider, Set<String> socialIds,
+    private LinkedAccountRepresentation toLinkedAccountRepresentation(IdentityProviderModel provider, Set<String> turksatIds,
                                                                       Stream<FederatedIdentityModel> identities) {
         String providerAlias = provider.getAlias();
 
@@ -124,7 +132,8 @@ public class LinkedAccountsResource {
 
         LinkedAccountRepresentation rep = new LinkedAccountRepresentation();
         rep.setConnected(identity != null);
-        rep.setSocial(socialIds.contains(provider.getProviderId()));
+        rep.setTurksat(turksatIds.contains(provider.getProviderId()));
+        //rep.setSocial(socialIds.contains(provider.getProviderId()));
         rep.setProviderAlias(providerAlias);
         rep.setDisplayName(displayName);
         rep.setGuiOrder(guiOrder);

@@ -227,7 +227,8 @@ class LinkedAccountsPage extends React.Component<LinkedAccountsPageProps, Linked
 
     private findIcon(account: LinkedAccount): React.ReactNode {
       const socialIconId = `${account.providerAlias}-idp-icon-social`;
-      console.log(account);
+        const turksatIconId = `${account.providerAlias}-idp-icon-turksat`;
+        console.log(account);
       switch (true) {
         case account.providerName.toLowerCase().includes('linkedin'):
           return <LinkedinIcon id={socialIconId} size='lg'/>;
@@ -241,6 +242,8 @@ class LinkedAccountsPage extends React.Component<LinkedAccountsPageProps, Linked
           return <MicrosoftIcon id={socialIconId} size='lg'/>;
         case account.providerName.toLowerCase().includes('bitbucket'):
           return <BitbucketIcon id={socialIconId} size='lg'/>;
+          case account.providerName.toLowerCase().includes('mobilsign'):
+              return <BitbucketIcon id={turksatIconId} size='lg'/>;
         case account.providerName.toLowerCase().includes('twitter'):
           return <TwitterIcon id={socialIconId} size='lg'/>;
         case account.providerName.toLowerCase().includes('openshift'):

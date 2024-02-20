@@ -17,6 +17,7 @@
 
 package org.keycloak.services.resources.admin;
 
+import com.google.common.collect.Streams;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.extensions.Extension;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
@@ -25,6 +26,7 @@ import org.jboss.resteasy.reactive.NoCache;
 import org.keycloak.broker.provider.IdentityProvider;
 import org.keycloak.broker.provider.IdentityProviderFactory;
 import org.keycloak.broker.social.SocialIdentityProvider;
+import org.keycloak.broker.turksat.TurksatIdentityProvider;
 import org.keycloak.connections.httpclient.HttpClientProvider;
 import org.keycloak.events.admin.OperationType;
 import org.keycloak.events.admin.ResourceType;
@@ -282,7 +284,8 @@ public class IdentityProvidersResource {
     }
 
     private Stream<ProviderFactory> getProviderFactories() {
-        return Stream.concat(session.getKeycloakSessionFactory().getProviderFactoriesStream(IdentityProvider.class),
+        return Streams.concat(session.getKeycloakSessionFactory().getProviderFactoriesStream(IdentityProvider.class),
+                session.getKeycloakSessionFactory().getProviderFactoriesStream(TurksatIdentityProvider.class),
                 session.getKeycloakSessionFactory().getProviderFactoriesStream(SocialIdentityProvider.class));
     }
 

@@ -22,6 +22,7 @@ import org.jboss.logging.Logger;
 import org.keycloak.broker.provider.IdentityProvider;
 import org.keycloak.broker.provider.IdentityProviderFactory;
 import org.keycloak.broker.social.SocialIdentityProvider;
+import org.keycloak.broker.turksat.TurksatIdentityProvider;
 import org.keycloak.common.enums.SslRequired;
 import org.keycloak.common.util.MultivaluedHashMap;
 import org.keycloak.common.util.Time;
@@ -1221,7 +1222,7 @@ public class RealmAdapter implements LegacyRealmModel, JpaModel<RealmEntity> {
 
     private IdentityProviderModel getModelFromProviderFactory(String providerId) {
         Optional<IdentityProviderFactory> factory = Stream.concat(session.getKeycloakSessionFactory().getProviderFactoriesStream(IdentityProvider.class),
-                                                                  session.getKeycloakSessionFactory().getProviderFactoriesStream(SocialIdentityProvider.class))
+                                                                  session.getKeycloakSessionFactory().getProviderFactoriesStream(TurksatIdentityProvider.class))
                                                           .filter(providerFactory -> Objects.equals(providerFactory.getId(), providerId))
                                                           .map(IdentityProviderFactory.class::cast)
                                                           .findFirst();

@@ -50,6 +50,7 @@ import org.keycloak.authorization.store.StoreFactory;
 import org.keycloak.broker.provider.IdentityProvider;
 import org.keycloak.broker.provider.IdentityProviderFactory;
 import org.keycloak.broker.social.SocialIdentityProvider;
+import org.keycloak.broker.turksat.TurksatIdentityProvider;
 import org.keycloak.common.Profile;
 import org.keycloak.common.util.MultivaluedHashMap;
 import org.keycloak.common.util.UriUtils;
@@ -816,7 +817,7 @@ public class RepresentationToModel {
         
         if (providerFactory == null) {
             providerFactory = (IdentityProviderFactory) session.getKeycloakSessionFactory().getProviderFactory(
-                    SocialIdentityProvider.class, representation.getProviderId());
+                    TurksatIdentityProvider.class, representation.getProviderId());
         }
         
         if (providerFactory == null) {

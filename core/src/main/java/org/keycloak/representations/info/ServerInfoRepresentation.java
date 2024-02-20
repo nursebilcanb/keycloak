@@ -41,6 +41,7 @@ public class ServerInfoRepresentation {
     private Map<String, List<ThemeInfoRepresentation>> themes;
 
     private List<Map<String, String>> socialProviders;
+    private List<Map<String, String>> turksatProviders;
     private List<Map<String, String>> identityProviders;
     private List<Map<String, String>> clientImporters;
 
@@ -107,8 +108,16 @@ public class ServerInfoRepresentation {
         return socialProviders;
     }
 
+    public List<Map<String, String>> getTurksatProviders() {
+        return turksatProviders;
+    }
+
+
     public void setSocialProviders(List<Map<String, String>> socialProviders) {
         this.socialProviders = socialProviders;
+    }
+    public void setTurksatProviders(List<Map<String, String>> turksatProviders){
+        this.turksatProviders=turksatProviders;
     }
 
     public List<Map<String, String>> getIdentityProviders() {

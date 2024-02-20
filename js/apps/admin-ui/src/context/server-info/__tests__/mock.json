@@ -295,6 +295,9 @@
     { "groupName": "Social", "name": "PayPal", "id": "paypal" },
     { "groupName": "Social", "name": "StackOverflow", "id": "stackoverflow" }
   ],
+  "turksatProviders": [
+    { "groupName": "Turksat", "name": "Mobil Sign", "id": "mobilsign" }
+  ],
   "identityProviders": [
     { "groupName": "User-defined", "name": "SAML v2.0", "id": "saml" },
     {
@@ -314,6 +317,7 @@
     { "groupName": "Social", "name": "Instagram", "id": "instagram" },
     { "groupName": "Social", "name": "Microsoft", "id": "microsoft" },
     { "groupName": "Social", "name": "BitBucket", "id": "bitbucket" },
+    { "groupName": "Turksat", "name": "Mobil Sign", "id": "mobilsign" },
     { "groupName": "Social", "name": "Twitter", "id": "twitter" },
     { "groupName": "Social", "name": "Openshift v4", "id": "openshift-v4" },
     { "groupName": "Social", "name": "Openshift v3", "id": "openshift-v3" },

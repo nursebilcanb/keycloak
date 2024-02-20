@@ -29,6 +29,7 @@ import org.keycloak.broker.provider.IdentityProvider;
 import org.keycloak.broker.provider.IdentityProviderFactory;
 import org.keycloak.broker.provider.IdentityProviderMapper;
 import org.keycloak.broker.social.SocialIdentityProvider;
+import org.keycloak.broker.turksat.TurksatIdentityProvider;
 import org.keycloak.events.admin.OperationType;
 import org.keycloak.events.admin.ResourceType;
 import org.keycloak.models.FederatedIdentityModel;
@@ -246,7 +247,7 @@ public class IdentityProviderResource {
     private IdentityProviderFactory<?> getIdentityProviderFactory() {
         String providerId = identityProviderModel.getProviderId();
         return Stream.concat(session.getKeycloakSessionFactory().getProviderFactoriesStream(IdentityProvider.class),
-                session.getKeycloakSessionFactory().getProviderFactoriesStream(SocialIdentityProvider.class))
+                session.getKeycloakSessionFactory().getProviderFactoriesStream(TurksatIdentityProvider.class))
                 .filter(providerFactory -> Objects.equals(providerFactory.getId(), providerId))
                 .map(IdentityProviderFactory.class::cast)
                 .findFirst()
